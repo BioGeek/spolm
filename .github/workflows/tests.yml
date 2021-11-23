@@ -12,12 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
         with:
-          path: cookiecutter-spolm
+          path: spolm
       - uses: actions/setup-python@v2.3.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install tools using pip
-        working-directory: cookiecutter-spolm
+        working-directory: spolm
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
