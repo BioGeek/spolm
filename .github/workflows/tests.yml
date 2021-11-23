@@ -24,8 +24,6 @@ jobs:
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
           pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
-      - name: Generate project using Cookiecutter
-        run: cookiecutter --no-input cookiecutter-hypermodern-python
       - name: Create git repository
         if: matrix.os != 'windows-latest'
         run: |
@@ -34,7 +32,7 @@ jobs:
           git config --local user.email "action@github.com"
           git add .
           git commit --message="Initial import"
-        working-directory: hypermodern-python
+        working-directory: spolm
       - name: Create git repository (Windows)
         if: matrix.os == 'windows-latest'
         run: |
@@ -47,7 +45,7 @@ jobs:
           $ErrorActionPreference = "Stop"
           git add --renormalize .
           git commit --message="Initial import"
-        working-directory: hypermodern-python
+        working-directory: spolm
       - name: Compute cache key for pre-commit
         if: matrix.os != 'windows-latest'
         id: cache_key
