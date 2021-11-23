@@ -23,28 +23,6 @@ jobs:
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
           pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
-      - name: Create git repository
-        if: matrix.os != 'windows-latest'
-        run: |
-          git init
-          git config --local user.name "GitHub Action"
-          git config --local user.email "action@github.com"
-          git add .
-          git commit --message="Initial import"
-        working-directory: spolm
-      - name: Create git repository (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          git init
-          git config --local user.name "GitHub Action"
-          git config --local user.email "action@github.com"
-          # https://github.com/cookiecutter/cookiecutter/issues/405
-          $ErrorActionPreference = "Continue"
-          git add .
-          $ErrorActionPreference = "Stop"
-          git add --renormalize .
-          git commit --message="Initial import"
-        working-directory: spolm
       - name: Compute cache key for pre-commit
         if: matrix.os != 'windows-latest'
         id: cache_key
