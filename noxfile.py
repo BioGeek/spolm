@@ -20,7 +20,7 @@ except ImportError:
     raise SystemExit(dedent(message)) from None
 
 
-package = "{{cookiecutter.package_name}}"
+package = "spolm"
 python_versions = ["3.9"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
@@ -118,7 +118,7 @@ def safety(session: Session) -> None:
 @session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
-    args = session.posargs or ["src", "tests", "docs/conf.py"]
+    args = session.posargs or ["spolm", "tests", "docs/conf.py"]
     session.install(".")
     session.install("mypy", "pytest")
     session.run("mypy", *args)

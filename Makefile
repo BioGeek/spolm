@@ -15,7 +15,7 @@ clean:
 
 ## Lint using flake8
 lint:
-	flake8 src
+	flake8 spolm
 
 #################################################################################
 # PROJECT RULES                                                                 #
