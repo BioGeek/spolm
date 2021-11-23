@@ -12,15 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
         with:
-          path: cookiecutter-hypermodern-python
+          path: cookiecutter-spolm
       - uses: actions/setup-python@v2.3.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install tools using pip
-        working-directory: cookiecutter-hypermodern-python
+        working-directory: cookiecutter-spolm
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt cookiecutter
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
           pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
@@ -64,12 +63,12 @@ jobs:
         if: matrix.os != 'windows-latest'
         with:
           path: ~/.cache/pre-commit
-          key: ${{ steps.cache_key.outputs.result }}-${{ hashFiles('hypermodern-python/.pre-commit-config.yaml') }}
+          key: ${{ steps.cache_key.outputs.result }}-${{ hashFiles('spolm/.pre-commit-config.yaml') }}
           restore-keys: |
             ${{ steps.cache_key.outputs.result }}-
       - name: Run test suite using Nox
         run: nox --force-color
-        working-directory: hypermodern-python
+        working-directory: spolm
       - name: Install dependencies using Poetry
         run: poetry install --ansi
-        working-directory: hypermodern-python
+        working-directory: spolm
