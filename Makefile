@@ -1,4 +1,4 @@
-.PHONY: clean data
+.PHONY: clean clear_cache data
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -12,6 +12,10 @@ requirements:
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+
+## Clear poetry cache
+clear_cache:
+	poetry cache clear --all .
 
 #################################################################################
 # PROJECT RULES                                                                 #
