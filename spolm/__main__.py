@@ -3,7 +3,7 @@ import click
 
 
 @click.command()
-@click.version_option()
+@click.version_option() # type: ignore
 def main() -> None:
     """spolm."""
 

@@ -16,7 +16,7 @@ RAW_DATA_URL = (
 @click.command()
 @click.option(
     "--nr_lines", default=10, help="Number of lines to add to the raw dataset"
-)
+)  # type: ignore
 def get_raw_data_slice(nr_lines: int) -> None:
     """Download `nr_of_lines` (more) of raw data."""
     logger = logging.getLogger(__name__)
