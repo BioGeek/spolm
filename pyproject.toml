@@ -9,7 +9,7 @@ readme = "README.md"
 python = ">=3.8.10,<3.9"
 python-dotenv = "^0.19.2"
 click = ">7.0.0"
-dvc = "^2.8.3"
+dvc = "<2.8.3"
 tensorflow = "2.6.0"
 tfx = "^1.4.0"
 

@@ -597,7 +597,7 @@ watch = ["pyinotify"]
 
 [[package]]
 name = "dvc"
-version = "2.8.3"
+version = "2.8.2"
 description = "Git for data scientists - manage your code and data together"
 category = "main"
 optional = false
@@ -630,10 +630,10 @@ pyasn1 = ">=0.4.1"
 pydot = ">=1.2.4"
 pygit2 = ">=1.5.0"
 pygtrie = ">=2.3.2"
-pyparsing = ">=2.4.7"
+pyparsing = "2.4.7"
 python-benedict = ">=0.24.2"
 requests = ">=2.22.0"
-rich = ">=10.13.0"
+rich = ">=10.9.0"
 "ruamel.yaml" = ">=0.17.11"
 shortuuid = ">=0.5.0"
 shtab = ">=1.3.4,<2"
@@ -645,20 +645,19 @@ voluptuous = ">=0.11.7"
 "zc.lockfile" = ">=1.2.1"
 
 [package.extras]
-all = ["adlfs (==2021.9.1)", "azure-identity (>=1.4.0)", "knack", "pydrive2[fsspec] (>=1.9.4)", "gcsfs (==2021.11.0)", "fsspec", "ossfs (==2021.8.0)", "s3fs (==2021.11.0)", "aiobotocore[boto3] (>1.0.1)", "sshfs[bcrypt] (>=2021.8.1)", "webdav4 (>=0.9.3)"]
+all = ["adlfs (==2021.9.1)", "azure-identity (>=1.4.0)", "knack", "pydrive2[fsspec] (>=1.9.4)", "gcsfs (==2021.10.1)", "ossfs (==2021.8.0)", "s3fs (==2021.10.1)", "aiobotocore[boto3] (>1.0.1)", "sshfs[bcrypt] (>=2021.8.1)", "webdav4 (>=0.9.3)", "fsspec"]
 azure = ["adlfs (==2021.9.1)", "azure-identity (>=1.4.0)", "knack"]
-dev = ["adlfs (==2021.9.1)", "azure-identity (>=1.4.0)", "knack", "pydrive2[fsspec] (>=1.9.4)", "gcsfs (==2021.11.0)", "fsspec", "ossfs (==2021.8.0)", "s3fs (==2021.11.0)", "aiobotocore[boto3] (>1.0.1)", "sshfs[bcrypt] (>=2021.8.1)", "webdav4 (>=0.9.3)", "tpi[ssh] (>=2.1.0)", "wheel (==0.37.0)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-xdist (==2.4.0)", "pytest-mock (==3.6.1)", "pytest-lazy-fixture (==0.6.3)", "pytest-docker (==0.10.3)", "flaky (==3.7.0)", "mock (==4.0.3)", "rangehttpserver (==1.2.0)", "mock-ssh-server (==0.9.1)", "wget (==3.2)", "filelock (==3.3.2)", "wsgidav (==3.1.1)", "crc32c (==2.2.post0)", "xmltodict (==0.12.0)", "google-compute-engine (==2.8.13)", "google-cloud-storage (==1.42.3)", "dvclive (==0.4.2)", "hdfs (==2.6.0)", "Pygments (==2.10.0)", "collective.checkdocs (==0.2)", "pydocstyle (==6.1.1)", "pylint (==2.11.1)", "pylint-pytest (==1.1.2)", "pylint-plugin-utils (==0.6)", "mypy (==0.910)", "types-requests (==2.25.11)", "types-tabulate (==0.8.3)", "types-toml (==0.10.1)", "pywin32 (>=225)"]
+dev = ["adlfs (==2021.9.1)", "azure-identity (>=1.4.0)", "knack", "pydrive2[fsspec] (>=1.9.4)", "gcsfs (==2021.10.1)", "ossfs (==2021.8.0)", "s3fs (==2021.10.1)", "aiobotocore[boto3] (>1.0.1)", "sshfs[bcrypt] (>=2021.8.1)", "webdav4 (>=0.9.3)", "tpi[ssh] (>=2.1.0)", "wheel (==0.37.0)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-xdist (==2.4.0)", "pytest-mock (==3.6.1)", "pytest-lazy-fixture (==0.6.3)", "pytest-docker (==0.10.3)", "flaky (==3.7.0)", "mock (==4.0.3)", "rangehttpserver (==1.2.0)", "mock-ssh-server (==0.9.1)", "wget (==3.2)", "filelock (==3.3.1)", "wsgidav (==3.1.1)", "crc32c (==2.2.post0)", "xmltodict (==0.12.0)", "google-compute-engine (==2.8.13)", "google-cloud-storage (==1.42.3)", "dvclive (==0.4.1)", "hdfs (==2.6.0)", "Pygments (==2.10.0)", "collective.checkdocs (==0.2)", "pydocstyle (==6.1.1)", "jaraco.windows (==5.7.0)", "pylint (==2.11.1)", "pylint-pytest (==1.0.3)", "pylint-plugin-utils (==0.6)", "mypy (==0.910)", "types-requests (==2.25.11)", "types-tabulate (==0.8.3)", "types-toml (==0.10.1)", "fsspec", "pywin32 (>=225)"]
 gdrive = ["pydrive2[fsspec] (>=1.9.4)"]
-gs = ["gcsfs (==2021.11.0)"]
+gs = ["gcsfs (==2021.10.1)"]
 hdfs = ["fsspec"]
 oss = ["ossfs (==2021.8.0)"]
-s3 = ["s3fs (==2021.11.0)", "aiobotocore[boto3] (>1.0.1)"]
+s3 = ["s3fs (==2021.10.1)", "aiobotocore[boto3] (>1.0.1)"]
 ssh = ["sshfs[bcrypt] (>=2021.8.1)"]
 ssh_gssapi = ["sshfs[gssapi] (>=2021.8.1)"]
 terraform = ["tpi[ssh] (>=2.1.0)"]
-tests = ["tpi[ssh] (>=2.1.0)", "wheel (==0.37.0)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-xdist (==2.4.0)", "pytest-mock (==3.6.1)", "pytest-lazy-fixture (==0.6.3)", "pytest-docker (==0.10.3)", "flaky (==3.7.0)", "mock (==4.0.3)", "rangehttpserver (==1.2.0)", "mock-ssh-server (==0.9.1)", "wget (==3.2)", "filelock (==3.3.2)", "wsgidav (==3.1.1)", "crc32c (==2.2.post0)", "xmltodict (==0.12.0)", "google-compute-engine (==2.8.13)", "google-cloud-storage (==1.42.3)", "dvclive (==0.4.2)", "hdfs (==2.6.0)", "Pygments (==2.10.0)", "collective.checkdocs (==0.2)", "pydocstyle (==6.1.1)", "pylint (==2.11.1)", "pylint-pytest (==1.1.2)", "pylint-plugin-utils (==0.6)", "mypy (==0.910)", "types-requests (==2.25.11)", "types-tabulate (==0.8.3)", "types-toml (==0.10.1)", "pywin32 (>=225)"]
+tests = ["tpi[ssh] (>=2.1.0)", "wheel (==0.37.0)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-xdist (==2.4.0)", "pytest-mock (==3.6.1)", "pytest-lazy-fixture (==0.6.3)", "pytest-docker (==0.10.3)", "flaky (==3.7.0)", "mock (==4.0.3)", "rangehttpserver (==1.2.0)", "mock-ssh-server (==0.9.1)", "wget (==3.2)", "filelock (==3.3.1)", "wsgidav (==3.1.1)", "crc32c (==2.2.post0)", "xmltodict (==0.12.0)", "google-compute-engine (==2.8.13)", "google-cloud-storage (==1.42.3)", "dvclive (==0.4.1)", "hdfs (==2.6.0)", "Pygments (==2.10.0)", "collective.checkdocs (==0.2)", "pydocstyle (==6.1.1)", "jaraco.windows (==5.7.0)", "pylint (==2.11.1)", "pylint-pytest (==1.0.3)", "pylint-plugin-utils (==0.6)", "mypy (==0.910)", "types-requests (==2.25.11)", "types-tabulate (==0.8.3)", "types-toml (==0.10.1)", "pywin32 (>=225)"]
 webdav = ["webdav4 (>=0.9.3)"]
-webhdfs = ["requests-kerberos (==0.13.0)"]
 
 [[package]]
 name = "entrypoints"
@@ -1385,11 +1384,14 @@ kerberos = ["requests-kerberos (>=0.7.0)"]
 
 [[package]]
 name = "httplib2"
-version = "0.18.1"
+version = "0.19.1"
 description = "A comprehensive HTTP client library."
 category = "main"
 optional = false
 python-versions = "*"
+
+[package.dependencies]
+pyparsing = ">=2.4.2,<3"
 
 [[package]]
 name = "identify"
@@ -2454,14 +2456,11 @@ zstd = ["zstandard"]
 
 [[package]]
 name = "pyparsing"
-version = "3.0.6"
+version = "2.4.7"
 description = "Python parsing module"
 category = "main"
 optional = false
-python-versions = ">=3.6"
-
-[package.extras]
-diagrams = ["jinja2", "railroad-diagrams"]
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "pyrsistent"
@@ -3527,8 +3526,8 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.8.12,<3.9"
-content-hash = "63cd87e5219aaba8ed18c3625e01ecc30960f79c07ce868b8250b4925667b91f"
+python-versions = ">=3.8.10,<3.9"
+content-hash = "50f4419eb65fb35e63fb118dbe4d7740e53146e72f063d9512dd74ecc24f56fa"
 
 [metadata.files]
 absl-py = [
@@ -3966,8 +3965,8 @@ dulwich = [
     {file = "dulwich-0.20.26.tar.gz", hash = "sha256:38aa50f859c8ea53071a049c3f1d5cc54f7dc60a4136a1ab631756a79f6582b5"},
 ]
 dvc = [
-    {file = "dvc-2.8.3-py3-none-any.whl", hash = "sha256:8627fc7ce5c432e5d6c33a22bf08f767be0954860c31ebba620b47bdaf9012a4"},
-    {file = "dvc-2.8.3.tar.gz", hash = "sha256:e28e63bbf256045d16ffccdfbd86721110afe117b6e9472e24ab4fe1e0b68a19"},
+    {file = "dvc-2.8.2-py3-none-any.whl", hash = "sha256:f7f1918e1a92e473bfc2f67875875e8a0a5b5e30b6fbc6cf961afe6467ab3cb5"},
+    {file = "dvc-2.8.2.tar.gz", hash = "sha256:4577aa37f2befbeca93e87f6e570a16156ff24101ed1eb95fc5d0606ea114f46"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
@@ -4359,8 +4358,8 @@ hdfs = [
     {file = "hdfs-2.6.0.tar.gz", hash = "sha256:bc92ce4347f106d48b541f756caa930476998cfd3eed477ffbd63ae9ad1cdc22"},
 ]
 httplib2 = [
-    {file = "httplib2-0.18.1-py3-none-any.whl", hash = "sha256:ca2914b015b6247791c4866782fa6042f495b94401a0f0bd3e1d6e0ba2236782"},
-    {file = "httplib2-0.18.1.tar.gz", hash = "sha256:8af66c1c52c7ffe1aa5dc4bcd7c769885254b0756e6e69f953c7f0ab49a70ba3"},
+    {file = "httplib2-0.19.1-py3-none-any.whl", hash = "sha256:2ad195faf9faf079723f6714926e9a9061f694d07724b846658ce08d40f522b4"},
+    {file = "httplib2-0.19.1.tar.gz", hash = "sha256:0b12617eeca7433d4c396a100eaecfa4b08ee99aa881e6df6e257a7aad5d533d"},
 ]
 identify = [
     {file = "identify-2.4.0-py2.py3-none-any.whl", hash = "sha256:eba31ca80258de6bb51453084bff4a923187cd2193b9c13710f2516ab30732cc"},
@@ -5171,8 +5170,8 @@ pymongo = [
     {file = "pymongo-3.12.1.tar.gz", hash = "sha256:704879b6a54c45ad76cea7c6789c1ae7185050acea7afd15b58318fa1932ed45"},
 ]
 pyparsing = [
-    {file = "pyparsing-3.0.6-py3-none-any.whl", hash = "sha256:04ff808a5b90911829c55c4e26f75fa5ca8a2f5f36aa3a51f68e27033341d3e4"},
-    {file = "pyparsing-3.0.6.tar.gz", hash = "sha256:d9bdec0013ef1eb5a84ab39a3b3868911598afa494f5faa038647101504e2b81"},
+    {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
+    {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
 ]
 pyrsistent = [
     {file = "pyrsistent-0.18.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:f4c8cabb46ff8e5d61f56a037974228e978f26bfefce4f61a4b1ac0ba7a2ab72"},
