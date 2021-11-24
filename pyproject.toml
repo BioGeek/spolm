@@ -6,7 +6,7 @@ authors = ["Jeroen Van Goey"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9.8"
+python = "^3.8.12"
 python-dotenv = "^0.19.2"
 click = "^8.0.3"
 dvc = "^2.8.3"
