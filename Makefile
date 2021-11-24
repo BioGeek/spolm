@@ -1,4 +1,4 @@
-.PHONY: clean lint data
+.PHONY: clean data
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -12,10 +12,6 @@ requirements:
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
-
-## Lint using flake8
-lint:
-	flake8 spolm
 
 #################################################################################
 # PROJECT RULES                                                                 #
