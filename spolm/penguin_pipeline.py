@@ -8,7 +8,7 @@ from tfx.components import ExampleValidator
 from tfx.components import SchemaGen
 from tfx.components import StatisticsGen
 from tfx.components import Transform
-from tfx.orchestration import pipeline
+from tfx.orchestration import pipeline # type: ignore
 from tfx.orchestration.local.local_dag_runner import LocalDagRunner
 
 _pipeline_name = "penguin_local"

@@ -122,6 +122,7 @@ def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or [
         "--ignore-missing-imports",
+        "--implicit-reexport",
         "spolm",
         "tests",
         "docs/conf.py",

@@ -1,5 +1,8 @@
 """Script to turn raw data into features for modeling."""
+from typing import Dict, Any
+
 import tensorflow_transform as tft
+
 
 FEATURE_KEYS = [
     "culmen_length_mm",
@@ -10,13 +13,13 @@ FEATURE_KEYS = [
 _LABEL_KEY = "species"
 
 
-def transformed_name(key):
+def transformed_name(key: str) -> str:
     """Transform a key."""
     return key + "_xf"
 
 
 # TFX Transform will call this function.
-def preprocessing_fn(inputs):
+def preprocessing_fn(inputs: Dict[str, Any]) -> Dict[str, Any]:
     """tf.transform's callback function for preprocessing inputs.
 
     Args:

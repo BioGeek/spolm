@@ -52,3 +52,11 @@ repos:
         language: system
         types: [text]
         stages: [commit, push, manual]
+      - id: mypy
+        name: Do type checking
+        entry: mypy
+        language: system
+        types: [python]
+        args: [--ignore-missing-imports, --implicit-reexport]
+
+      
