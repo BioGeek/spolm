@@ -1,5 +1,6 @@
 """Script to turn raw data into features for modeling."""
-from typing import Dict, Any
+from typing import Any
+from typing import Dict
 
 import tensorflow_transform as tft
 
