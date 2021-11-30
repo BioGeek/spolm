@@ -436,7 +436,7 @@ six = "*"
 name = "coverage"
 version = "6.2"
 description = "Code coverage measurement for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -3783,7 +3783,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.10,<3.9"
-content-hash = "cb9b7e1a73aed8454437be8b9934890e276a8f25b4bd3352ecbdb34a8cd62d85"
+content-hash = "c6cc2cae53377583db2b1811ebdd8896eef887d9f935a3059b239e69cbc4fd76"
 
 [metadata.files]
 absl-py = [
