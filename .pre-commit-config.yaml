@@ -27,12 +27,12 @@ repos:
         language: system
         types: [text]
         stages: [commit, push, manual]
-      - id: flake8
-        name: flake8
-        entry: flake8
-        language: system
-        types: [python]
-        require_serial: true
+#     - id: flake8
+#       name: flake8
+#       entry: flake8
+#       language: system
+#       types: [python]
+#       require_serial: true
       - id: pyupgrade
         name: pyupgrade
         description: Automatically upgrade syntax for newer versions.
@@ -52,9 +52,9 @@ repos:
         language: system
         types: [text]
         stages: [commit, push, manual]
-      - id: mypy
-        name: Do type checking
-        entry: mypy
-        language: system
-        types: [python]
-        args: [--ignore-missing-imports, --implicit-reexport]
+#     - id: mypy
+#       name: Do type checking
+#       entry: mypy
+#       language: system
+#       types: [python]
+#       args: [--ignore-missing-imports, --implicit-reexport]
