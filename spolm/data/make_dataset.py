@@ -2,83 +2,75 @@
 import logging
 from pathlib import Path
 
-import click
 import pandas as pd
-from dotenv import find_dotenv
-from dotenv import load_dotenv
+import requests
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
+from spolm.features.constants import FEATURES
+from spolm.features.constants import RAW_DATA_URLS
+from spolm.features.constants import RENAME
+from spolm.features.constants import REPLACE
+from spolm.features.constants import TARGETS
 
-SEED = 90210
-
-RAW_DATA_URL = (
-    "https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/"
-    "master/palmerpenguins/data/penguins-raw.csv"
-)
-
-MAPPING = {
-    "Culmen Length (mm)": "culmen_length_mm",
-    "Culmen Depth (mm)": "culmen_depth_mm",
-    "Flipper Length (mm)": "flipper_length_mm",
-    "Body Mass (g)": "body_mass_g",
-    "Species": "species",
-}
-TARGET = "species"
-FEATURES = [feature for feature in MAPPING.values() if feature != TARGET]
+SEED = 42
 
 
-@click.command()
-@click.option(
-    "--nr_lines", default=10, help="Number of lines to add to the raw dataset"
-)  # type: ignore
-@click.option(
-    "--pipeline_name", default="penguin_local", help="Number of the pipeline"
-)  # type: ignore
-def get_raw_data_slice(nr_lines: int, pipeline_name: str) -> None:
-    """Download `nr_of_lines` (more) of raw data."""
+def get_raw_data(
+    pipeline_name: str, project_dir: Path = Path(__file__).resolve().parents[2]
+) -> Path:
+    """Get raw data."""
     logger = logging.getLogger(__name__)
-    project_dir = Path(__file__).resolve().parents[2]
-    filename = RAW_DATA_URL.rsplit("/", 1)[-1]
-    output_dir = project_dir / "data" / pipeline_name / "raw"
+    url = RAW_DATA_URLS[pipeline_name]
+    filename = url.rsplit("/", 1)[-1]
+    output_dir = project_dir / "data" / pipeline_name / "unlabelled"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_filepath = output_dir / filename
-    df = pd.read_csv(RAW_DATA_URL)
-    df = df.dropna()
-    df = df[list(MAPPING.keys())]
-    df = df.rename(columns=MAPPING)
+    output_path = output_dir / filename
+    logger.info(f"Downloading RAW data for pipeline {pipeline_name}")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
+    with open(output_path, "wb") as fp:
+        fp.write(response.content)
+    return output_path
 
+
+def preprocess_data(raw_data_filepath: Path) -> Path:
+    """Preprocess raw data."""
+    logger = logging.getLogger(__name__)
+    pipeline_name = raw_data_filepath.parts[-3]
+    logger.info(f"Preprocessing RAW data for pipeline {pipeline_name}")
+    df = pd.read_csv(raw_data_filepath)
+    df = df.dropna()
+    df = df.rename(columns=RENAME.get(pipeline_name, {}))
+    df = df[FEATURES[pipeline_name] + [TARGETS[pipeline_name]]]
+    df[TARGETS[pipeline_name]] = df[TARGETS[pipeline_name]].replace(
+        REPLACE.get(pipeline_name, {})
+    )
     # deterministic shuffle
     df = df.sample(frac=1, random_state=SEED)
 
     # normalize features
     scaler = MinMaxScaler()
-    df[FEATURES] = scaler.fit_transform(df[FEATURES])
+    df[FEATURES[pipeline_name]] = scaler.fit_transform(df[FEATURES[pipeline_name]])
 
     # encode target labels
     label_encoder = LabelEncoder()
-    df[TARGET] = label_encoder.fit_transform(df[TARGET])
+    df[TARGETS[pipeline_name]] = label_encoder.fit_transform(df[TARGETS[pipeline_name]])
 
-    if not output_filepath.exists():
-        logger.info(f"Making first raw data set with {nr_lines} lines")
-        df = df.head(nr_lines)
-    else:
-        with open(output_filepath) as f:
-            current_nr_lines = len(f.readlines()) - 1  # remove 1 for the header
-        new_nr_lines = current_nr_lines + nr_lines
-        logger.info(
-            f"Updating raw data set. Already found {current_nr_lines}, "
-            f"adding {nr_lines} lines"
-        )
-        df = df.iloc[:new_nr_lines, :]
-    df.to_csv(output_filepath, index=False)
+    output_dir = Path(*(raw_data_filepath.parts[:-2] + ("labelled",)))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    filename = raw_data_filepath.parts[-1].replace("raw", "processed")
+    output_path = output_dir / filename
+
+    df.to_csv(output_path, index=False)
+
+    return output_path
 
 
 if __name__ == "__main__":
     log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     logging.basicConfig(level=logging.INFO, format=log_fmt)
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
-
-    get_raw_data_slice()
+    raw_data_filepath = get_raw_data("penguin")
+    preprocess_data(raw_data_filepath)
