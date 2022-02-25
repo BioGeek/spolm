@@ -1,4 +1,4 @@
-.PHONY: clean clear_cache data
+.PHONY: requirements clean clear_cache data
 
 #################################################################################
 # COMMANDS                                                                      #

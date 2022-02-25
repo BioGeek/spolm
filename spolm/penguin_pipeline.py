@@ -12,7 +12,7 @@ from tfx.orchestration.local.local_dag_runner import LocalDagRunner
 
 _pipeline_name = "penguin_local"
 
-_project_dir = Path(__file__).resolve().parents[2]
+_project_dir = Path(__file__).resolve().parents[2] / "spolm"
 _data_root = _project_dir / "data" / _pipeline_name
 
 # Python module file to inject customized logic into the TFX components. The
@@ -338,14 +338,19 @@ if __name__ == "__main__":
     LocalDagRunner().run(
         _create_pipeline(
             pipeline_name=_pipeline_name,
-            pipeline_root=str(_pipeline_root),
             data_root=str(_data_root),
             module_file=str(_module_file),
+            accuracy_threshold=0.1,
             serving_model_dir=str(_serving_model_dir),
+            pipeline_root=str(_pipeline_root),
             metadata_path=str(_metadata_path),
+            user_provided_schema_path=None,
+            enable_tuning=False,
+            enable_bulk_inferrer=False,
             examplegen_input_config=_examplegen_input_config,
             examplegen_range_config=_examplegen_range_config,
             resolver_range_config=_resolver_range_config,
             beam_pipeline_args=_beam_pipeline_args,
+            enable_transform_input_cache=False,
         )
     )
