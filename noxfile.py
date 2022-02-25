@@ -114,7 +114,14 @@ def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     requirements = session.poetry.export_requirements()
     session.install("safety")
-    ignore_ids = [42098, 42062]  # Tensorflow 2.6.0
+    ignore_ids = [
+        42098,  # Tensorflow 2.6.0
+        42062,  # Tensorflow 2.6.0
+        43453,  # NumPy CVE-2021-33430
+        44716,  # NumPy CVE-2021-41496
+        44717,  # NumPy CVE-2021-34141
+        44715,  # NumPy CVE-2021-41495
+    ]
     ignored = [f"--ignore={ignore_id}" for ignore_id in ignore_ids]
     session.run("safety", "check", "--full-report", f"--file={requirements}", *ignored)
 
