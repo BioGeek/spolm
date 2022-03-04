@@ -121,6 +121,7 @@ def safety(session: Session) -> None:
         44716,  # NumPy CVE-2021-41496
         44717,  # NumPy CVE-2021-34141
         44715,  # NumPy CVE-2021-41495
+        45114,  # kubernetes, CVE-2021-29923
     ]
     ignored = [f"--ignore={ignore_id}" for ignore_id in ignore_ids]
     session.run("safety", "check", "--full-report", f"--file={requirements}", *ignored)
