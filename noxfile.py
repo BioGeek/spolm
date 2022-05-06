@@ -115,13 +115,8 @@ def safety(session: Session) -> None:
     requirements = session.poetry.export_requirements()
     session.install("safety")
     ignore_ids = [
-        42098,  # Tensorflow 2.6.0
-        42062,  # Tensorflow 2.6.0
-        43453,  # NumPy CVE-2021-33430
-        44716,  # NumPy CVE-2021-41496
-        44717,  # NumPy CVE-2021-34141
-        44715,  # NumPy CVE-2021-41495
         45114,  # kubernetes, CVE-2021-29923
+        47833,  # tfx depends on click < 8.0
     ]
     ignored = [f"--ignore={ignore_id}" for ignore_id in ignore_ids]
     session.run("safety", "check", "--full-report", f"--file={requirements}", *ignored)
@@ -166,7 +161,7 @@ def tests(session: Session) -> None:
 @session  # type: ignore
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
-    args = session.posargs or ["report"]
+    args = session.posargs or ["report", "--omit", "tests/*"]
 
     session.install("coverage[toml]")
 
