@@ -117,6 +117,7 @@ def safety(session: Session) -> None:
     ignore_ids = [
         45114,  # kubernetes, CVE-2021-29923
         47833,  # tfx depends on click < 8.0
+        48551,  # spolm depends on tensorflow (2.8.1) which depends on tensorflow-estimator (>=2.8,<2.9),
     ]
     ignored = [f"--ignore={ignore_id}" for ignore_id in ignore_ids]
     session.run("safety", "check", "--full-report", f"--file={requirements}", *ignored)

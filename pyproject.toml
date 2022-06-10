@@ -21,6 +21,7 @@ flax = ">=0.3.3,<0.4"
 types-mock = "^4.0.4"
 types-requests = "^2.26.1"
 coverage = {extras = ["toml"], version = "^6.2"}
+tensorflow-estimator = "2.8.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
